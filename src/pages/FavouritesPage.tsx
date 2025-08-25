@@ -1,12 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
 const FavouritesPage = () => {
-  // const [favourites, setFavourites] = useState<string[]>(() => {
-  //   const saved = localStorage.getItem("favourites");
-  //   return saved ? JSON.parse(saved) : [];
-  // });
-
   const favourites: string[] = JSON.parse(
     localStorage.getItem("favourites") || "[]"
   );
