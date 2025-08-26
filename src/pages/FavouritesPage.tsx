@@ -1,9 +1,18 @@
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 const FavouritesPage = () => {
-  const favourites: string[] = JSON.parse(
-    localStorage.getItem("favourites") || "[]"
-  );
+  const [favourites, setFavourites] = useState<string[]>(() => {
+    return JSON.parse(localStorage.getItem("favourites") || "[]");
+  });
+
+  useEffect(() => {
+    localStorage.setItem("favourites", JSON.stringify(favourites));
+  }, [favourites]);
+
+  const handleRemove = (fav: string) => {
+    setFavourites((prev) => prev.filter((f) => f !== fav));
+  };
 
   return (
     <div className="px-10 flex flex-col gap-6">
@@ -17,12 +26,7 @@ const FavouritesPage = () => {
                   <p>{fav}</p>
                   <Button
                     className="bg-red-500 text-white p-5 hover:bg-white hover:text-red-500"
-                    onClick={() => {
-                      localStorage.setItem(
-                        "favourites",
-                        JSON.stringify(favourites.filter((f) => f !== fav))
-                      );
-                    }}
+                    onClick={() => handleRemove(fav)}
                   >
                     Remove
                   </Button>
