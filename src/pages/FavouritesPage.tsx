@@ -25,7 +25,7 @@ const FavouritesPage = () => {
                 <li key={fav} className="flex flex-row gap-4 items-center">
                   <p>{fav}</p>
                   <Button
-                    className="bg-red-500 text-white p-5 hover:bg-white hover:text-red-500"
+                    className="bg-red-500 text-white p-5 hover:bg-black dark:hover:bg-white hover:text-red-500"
                     onClick={() => handleRemove(fav)}
                   >
                     Remove

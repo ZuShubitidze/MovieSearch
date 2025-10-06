@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <div className="flex justify-center items-center h-16 bg-purple-950 text-white flex-col">
+    <div className="flex justify-center items-center h-16 bg-blue-600 dark:bg-purple-950 flex-col mt-10">
       <p className="text-center">
         &copy; {new Date().getFullYear()} Movie Search. All rights reserved.
       </p>
