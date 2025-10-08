@@ -14,10 +14,10 @@ const Navbar = () => {
           Home
         </Link>
         <Link
-          to="/about"
+          to="/favourites"
           className="hover:bg-white dark:hover:bg-black p-6 rounded transition duration-500 text-2xl font-bold"
         >
-          About
+          Favourites
         </Link>
         <Link
           to="/contact"

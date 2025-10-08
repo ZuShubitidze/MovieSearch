@@ -2,7 +2,6 @@ import searchMovies from "@/components/AxiosSearch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const HomePage = () => {
   // URL States and Search Parameters
@@ -142,12 +141,6 @@ const HomePage = () => {
             Input Movie Name and Year Above
           </p>
         )}
-        <Link
-          to="/favourites"
-          className="text-purple-900 text-lg font-bold mt-20 border border-purple-900 hover:bg-purple-900 hover:text-white w-40 centered text-center p-2 rounded-lg"
-        >
-          View Favourites
-        </Link>
       </div>
     </>
   );

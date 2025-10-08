@@ -15,7 +15,7 @@ const FavouritesPage = () => {
   };
 
   return (
-    <div className="px-10 flex flex-col gap-6">
+    <section className="px-10 flex flex-col gap-6">
       <ul>
         <div className="flex flex-col gap-4">
           <div>
@@ -36,7 +36,7 @@ const FavouritesPage = () => {
           </div>
         </div>
       </ul>
-    </div>
+    </section>
   );
 };
 
