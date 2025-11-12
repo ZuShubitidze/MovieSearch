@@ -1,18 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState, AppDispatch } from "../store";
+import { removeFavourite } from "@/store/favouritesSlice";
 
 const FavouritesPage = () => {
-  const [favourites, setFavourites] = useState<string[]>(() => {
-    return JSON.parse(localStorage.getItem("favourites") || "[]");
-  });
+  // const [favourites, setFavourites] = useState<string[]>(() => {
+  //   return JSON.parse(localStorage.getItem("favourites") || "[]");
+  // });
 
-  useEffect(() => {
-    localStorage.setItem("favourites", JSON.stringify(favourites));
-  }, [favourites]);
+  const favourites = useSelector((state: RootState) => state.favourites.list);
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleRemove = (fav: string) => {
-    setFavourites((prev) => prev.filter((f) => f !== fav));
+    dispatch(removeFavourite(fav));
   };
+
+  // useEffect(() => {
+  //   localStorage.setItem("favourites", JSON.stringify(favourites));
+  // }, [favourites]);
+
+  // const handleRemove = (fav: string) => {
+  //   setFavourites((prev) => prev.filter((f) => f !== fav));
+  // };
 
   return (
     <section className="px-10 flex flex-col gap-6">

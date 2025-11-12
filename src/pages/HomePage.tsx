@@ -1,7 +1,10 @@
 import searchMovies from "@/components/AxiosSearch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import type { RootState, AppDispatch } from "../store";
+import { addFavourite } from "../store/favouritesSlice";
 
 const HomePage = () => {
   // URL States and Search Parameters
@@ -32,18 +35,21 @@ const HomePage = () => {
   };
 
   // Favourites
-  const [favourites, setFavourites] = useState<string[]>(() => {
-    const saved = localStorage.getItem("favourites");
-    return saved ? JSON.parse(saved) : [];
-  });
+  // const [favourites, setFavourites] = useState<string[]>(() => {
+  //   const saved = localStorage.getItem("favourites");
+  //   return saved ? JSON.parse(saved) : [];
+  // });
 
-  useEffect(() => {
-    localStorage.setItem("favourites", JSON.stringify(favourites));
-  }, [favourites]);
+  // useEffect(() => {
+  //   localStorage.setItem("favourites", JSON.stringify(favourites));
+  // }, [favourites]);
+
+  const favourites = useSelector((state: RootState) => state.favourites.list);
+  const dispatch = useDispatch<AppDispatch>();
 
   const handleAddFavourite = () => {
     if (data && !favourites.includes(data.Title)) {
-      setFavourites([...favourites, data.Title]);
+      dispatch(addFavourite(data.Title));
     }
   };
 
@@ -119,8 +125,13 @@ const HomePage = () => {
                   {data && (
                     <div className="flex lg:flex-row lg:gap-60 gap:20 flex-col">
                       {/* ...existing code... */}
-                      <Button onClick={handleAddFavourite}>
-                        Save to Favourites
+                      <Button
+                        onClick={handleAddFavourite}
+                        disabled={favourites.includes(data.Title)}
+                      >
+                        {favourites.includes(data.Title)
+                          ? "Already in favourites"
+                          : "Save to Favourites"}
                       </Button>
                     </div>
                   )}
