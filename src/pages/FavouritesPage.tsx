@@ -22,8 +22,8 @@ const FavouritesPage = () => {
             <h2 className="text-4xl font-bold pb-6">Favourites:</h2>
             <ul className="flex flex-col gap-8">
               {favourites.map((fav) => (
-                <li key={fav} className="flex flex-row gap-4 items-center">
-                  <p>{fav}</p>
+                <li key={fav} className="flex flex-row gap-10 items-center">
+                  <p className="w-1/6">{fav}</p>
                   <Button
                     className="bg-red-500 text-white p-5 hover:bg-black dark:hover:bg-white hover:text-red-500"
                     onClick={() => handleRemove(fav)}
