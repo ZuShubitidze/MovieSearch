@@ -19,12 +19,6 @@ const Navbar = () => {
         >
           Favourites
         </Link>
-        <Link
-          to="/contact"
-          className="hover:bg-white dark:hover:bg-black p-6 rounded transition duration-500 text-2xl font-bold"
-        >
-          Contact
-        </Link>
       </nav>
       <main className="flex-1">
         <Outlet />

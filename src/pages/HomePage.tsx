@@ -34,16 +34,6 @@ const HomePage = () => {
     setSearchYear(year);
   };
 
-  // Favourites
-  // const [favourites, setFavourites] = useState<string[]>(() => {
-  //   const saved = localStorage.getItem("favourites");
-  //   return saved ? JSON.parse(saved) : [];
-  // });
-
-  // useEffect(() => {
-  //   localStorage.setItem("favourites", JSON.stringify(favourites));
-  // }, [favourites]);
-
   const favourites = useSelector((state: RootState) => state.favourites.list);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -124,7 +114,6 @@ const HomePage = () => {
                   {error && <p>Error: {error}</p>}
                   {data && (
                     <div className="flex lg:flex-row lg:gap-60 gap:20 flex-col">
-                      {/* ...existing code... */}
                       <Button
                         onClick={handleAddFavourite}
                         disabled={favourites.includes(data.Title)}
